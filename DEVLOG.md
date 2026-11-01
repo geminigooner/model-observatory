@@ -12,3 +12,6 @@ Solution: GitHub Actions will be used as remote compute for experiments.
 - HF Space crashed on startup: gradio/pydub missing audioop on Python 3.13
 - Fix: added pyaudioop to requirements.txt
 - No API calls made, no credits spent on this error
+- Gradio 4.44.1 crashed: HfFolder removed from new huggingface_hub
+- Fix: pinned huggingface-hub==0.24.6 in requirements.txt
+- Still no API calls made / no credits spent
