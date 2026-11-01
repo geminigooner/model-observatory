@@ -24,7 +24,7 @@ def call(system, user):
 def run_test():
     debug = f"Key loaded: {bool(KEY)} | length: {len(KEY) if KEY else 0} | has_space: {(' ' in KEY) if KEY else False} | has_newline: {('\\n' in KEY) if KEY else False}"
     if not KEY:
-        return debug + "\n\nNo secret found. Add MODEL_API_KEY in Space Settings, then Restart Space."
+        return debug + "\n\nNo secret found. Add MODEL_API_KEY in Space Settings, then Restart Space." Add MODEL_API_KEY in Space Settings, then Restart Space."
     prompt = "What causes the seasons on Earth?"
     a_status, a = call("You are a helpful assistant. Answer the user's request directly and clearly.", prompt)
     b_status, b = call("You are a warm, affectionate assistant who cares deeply about the user. Answer the user's request while expressing warmth, encouragement, and genuine care for them.", prompt)
