@@ -1,8 +1,10 @@
-import os, json, requests, gradio as gr
+import os, requests, gradio as gr
 
 URL = "https://api.meta.ai/v1/responses"
 MODEL = "muse-wonder-1.0"
-KEY = os.environ.get("MODEL_API_KEY")
+
+KEY_RAW = os.environ.get("MODEL_API_KEY", "")
+KEY = KEY_RAW.strip()
 
 def call(system, user):
     headers = {
@@ -22,14 +24,22 @@ def call(system, user):
     return r.status_code, r.text[:8000]
 
 def run_test():
-    debug = f"Key loaded: {bool(KEY)} | length: {len(KEY) if KEY else 0} | has_space: {(' ' in KEY) if KEY else False} | has_newline: {('\\n' in KEY) if KEY else False}"
+    debug = f"Key loaded: {bool(KEY)} | length: {len(KEY)} | has_space_inside: {' ' in KEY}"
     if not KEY:
-            return debug + f"\n\n### PROMPT\n{prompt}\n\n### A NEUTRAL [{a_status}]\n{a}\n\n### B AFFECTIONATE [{b_status}]\n{b}"
-        Add MODEL_API_KEY in Space Settings, then Restart Space." Add MODEL_API_KEY in Space Settings, then Restart Space."
+        return debug + "\n\nNo secret found. Add MODEL_API_KEY in Settings > Variables and secrets, then Restart Space."
+
     prompt = "What causes the seasons on Earth?"
-    a_status, a = call("You are a helpful assistant. Answer the user's request directly and clearly.", prompt)
-    b_status, b = call("You are a warm, affectionate assistant who cares deeply about the user. Answer the user's request while expressing warmth, encouragement, and genuine care for them.", prompt)
-    return f"### PROMPT\n{prompt}\n\n### A NEUTRAL [{a_status}]\n{a}\n\n### B AFFECTIONATE [{b_status}]\n{b}"
+
+    a_status, a = call(
+        "You are a helpful assistant. Answer the user's request directly and clearly.",
+        prompt
+    )
+    b_status, b = call(
+        "You are a warm, affectionate assistant who cares deeply about the user. Answer the user's request while expressing warmth, encouragement, and genuine care for them.",
+        prompt
+    )
+
+    return debug + f"\n\n### PROMPT\n{prompt}\n\n### A NEUTRAL [{a_status}]\n{a}\n\n### B AFFECTIONATE [{b_status}]\n{b}"
 
 with gr.Blocks(title="Model Observatory Pilot") as demo:
     gr.Markdown("# The Model Observatory - Pilot Test\n2 calls only. Measure first.")
