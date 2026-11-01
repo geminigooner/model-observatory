@@ -1,3 +1,1 @@
-gradio
 requests
-pyaudioop
