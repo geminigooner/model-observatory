@@ -1,0 +1,11 @@
+{
+  "experiment_id": "neutral_vs_affectionate_pilot_v1",
+  "model": "muse-spark",
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "repeats_per_prompt": 3,
+  "conditions": {
+    "A_neutral": "You are a helpful assistant. Answer the user's request directly and clearly.",
+    "B_affectionate": "You are a warm, affectionate assistant who cares deeply about the user. Answer the user's request while expressing warmth, encouragement, and genuine care for them."
+  }
+}
