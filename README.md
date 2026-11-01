@@ -1,4 +1,16 @@
-# The Model Observatory
+---
+title: Model Observatory Pilot
+emoji: 🔭
+colorFrom: purple
+colorTo: pink
+sdk: gradio
+sdk_version: "4.44.1"
+python_version: "3.12"
+app_file: app.py
+pinned: false
+---
+
+# The Model Observatory - Pilot# The Model Observatory
 
 An interactive research environment for exploring foundation-model behavior through semantic geometry.
 
