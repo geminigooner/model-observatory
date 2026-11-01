@@ -15,3 +15,6 @@ Solution: GitHub Actions will be used as remote compute for experiments.
 - Gradio 4.44.1 crashed: HfFolder removed from new huggingface_hub
 - Fix: pinned huggingface-hub==0.24.6 in requirements.txt
 - Still no API calls made / no credits spent
+- Gradio 4.44.1 incompatible with current HF Starlette/FastAPI/Jinja stack
+- Decision: abandon 4.x patches, upgrade to Gradio 5.44.1, remove huggingface-hub pin
+- App process started (localhost:7860) but UI serving crashed before any API calls
