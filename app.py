@@ -39,12 +39,14 @@ def run_test():
         prompt
     )
 
-    return debug + f"\n\n### PROMPT\n{prompt}\n\n### A NEUTRAL [{a_status}]\n{a}\n\n### B AFFECTIONATE [{b_status}]\n{b}"
+    return debug + f"\n\nPROMPT: {prompt}\n\nA NEUTRAL [{a_status}]\n{a}\n\nB AFFECTIONATE [{b_status}]\n{b}"
 
-with gr.Blocks(title="Model Observatory Pilot") as demo:
-    gr.Markdown("# The Model Observatory - Pilot Test\n2 calls only. Measure first.")
-    btn = gr.Button("Run 2-call test")
-    out = gr.Markdown()
-    btn.click(run_test, outputs=out)
+demo = gr.Interface(
+    fn=run_test,
+    inputs=[],
+    outputs=gr.Textbox(lines=30, label="Result"),
+    title="Model Observatory - Pilot Test",
+    description="2 calls only. Measure first."
+)
 
-demo.launch()
+demo.launch(ssr_mode=False)
