@@ -9,3 +9,6 @@
 - Constraint: Solo, phone-only development (iPhone, no laptop).
 Solution: GitHub Actions will be used as remote compute for experiments.
 
+- HF Space crashed on startup: gradio/pydub missing audioop on Python 3.13
+- Fix: added pyaudioop to requirements.txt
+- No API calls made, no credits spent on this error
