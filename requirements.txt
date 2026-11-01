@@ -1,1 +1,2 @@
 requests
+huggingface-hub==0.24.6
